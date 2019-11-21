@@ -33,7 +33,6 @@ train_labels = np_utils.to_categorical(train_labels)
 test_labels = np_utils.to_categorical(test_labels)
 num_classes = train_labels.shape[1]
 
-
 # define a simple CNN model
 def baseline_model():
     # create model
@@ -42,7 +41,9 @@ def baseline_model():
     model.add(MaxPooling2D())
     model.add(Dropout(0.2))
     model.add(Flatten())
+    # hidden layer
     model.add(Dense(128, activation='relu'))
+    # output layer
     model.add(Dense(num_classes, activation='sigmoid'))
     # Compile model
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
